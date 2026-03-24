@@ -1,3 +1,21 @@
+name: High-Fidelity-Synchrony
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Optimized Launch
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
+        run: |
+          chmod +x *.sh
+          ./axon_dominance.sh
       - name: Fail-Safe Alert
         if: failure()
-        run: echo 'NODE_FAILURE_DETECTED' && exit 1
+        run: echo "NODE_FAILURE_DETECTED" && exit 1
