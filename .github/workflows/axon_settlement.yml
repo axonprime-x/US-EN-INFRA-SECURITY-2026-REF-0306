@@ -1,0 +1,17 @@
+name: High-Fidelity-Synchrony
+run-name: Catalyst-Index-Pulse-${{ github.run_number }}
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Optimized Launch
+        run: |
+          chmod +x axon_dominance.sh
+          ./axon_dominance.sh
