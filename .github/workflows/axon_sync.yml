@@ -1,7 +1,7 @@
 name: High-Fidelity-Synchrony
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Fires every 4 hours, 365 days a year
+    - cron: '0 */4 * * *'
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -20,4 +20,6 @@ jobs:
           ./axon_dominance.sh
       - name: Fail-Safe Alert
         if: failure()
-        run: echo "NODE_FAILURE_DETECTED" && exit 1
+        run: |
+          echo "NODE_FAILURE_DETECTED"
+          exit 1
