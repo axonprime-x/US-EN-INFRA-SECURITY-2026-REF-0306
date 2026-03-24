@@ -1,5 +1,7 @@
 name: High-Fidelity-Synchrony
 on:
+  schedule:
+    - cron: '0 */4 * * *'  # Fires every 4 hours, 365 days a year
   push:
     branches: [ main ]
   workflow_dispatch:
