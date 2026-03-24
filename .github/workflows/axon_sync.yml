@@ -1,0 +1,3 @@
+      - name: Fail-Safe Alert
+        if: failure()
+        run: echo 'NODE_FAILURE_DETECTED' && exit 1
